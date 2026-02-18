@@ -1,0 +1,37 @@
+
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ page_title }}</title>
+    
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --color-brand-orange: {{ settings.brand_orange | default: '#f0945c' }};
+        --color-brand-blue: {{ settings.brand_blue | default: '#89c4e1' }};
+      }
+      body { font-family: 'Inter', sans-serif; }
+      .font-display { font-family: 'Playfair Display', serif; }
+    </style>
+  </head>
+
+  <body class="bg-white text-slate-900 antialiased">
+    {% section 'header' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+  </body>
+</html>

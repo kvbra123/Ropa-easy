@@ -1,0 +1,30 @@
+
+[
+  {
+    "name": "Identidad Visual Ropa Easy",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colores Corporativos"
+      },
+      {
+        "type": "color",
+        "id": "brand_orange",
+        "label": "Naranja Ropa Easy",
+        "default": "#f0945c"
+      },
+      {
+        "type": "color",
+        "id": "brand_blue",
+        "label": "Azul Cielo Ropa Easy",
+        "default": "#89c4e1"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_main",
+        "label": "Tipografía Principal",
+        "default": "inter_n4"
+      }
+    ]
+  }
+]
