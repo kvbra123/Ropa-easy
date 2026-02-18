@@ -4,8 +4,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Ropa Easy | Digitalización & IA</title>
+    <title>{{ page_title }}</title>
     
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
     {{ content_for_header }}
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,28 +17,21 @@
     
     <style>
       :root {
-        --brand-orange: #f0945c;
-        --brand-blue: #89c4e1;
+        --color-brand-orange: {{ settings.brand_orange | default: '#f0945c' }};
+        --color-brand-blue: {{ settings.brand_blue | default: '#89c4e1' }};
       }
-      body { 
-        font-family: 'Inter', sans-serif; 
-        -webkit-font-smoothing: antialiased;
-        background: white;
-      }
+      body { font-family: 'Inter', sans-serif; }
       .font-display { font-family: 'Playfair Display', serif; }
-      .editorial-grid { border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9; }
-      
-      /* Aseguramos que el root ocupe el espacio necesario */
-      #root { min-height: 100vh; }
     </style>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
-    <!-- Solo renderizamos el root de React para evitar duplicados con Liquid -->
-    <div id="root"></div>
+  <body class="bg-white text-slate-900 antialiased">
+    {% section 'header' %}
 
-    <main id="MainContent" class="hidden">
+    <main id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
+
+    {% section 'footer' %}
   </body>
 </html>

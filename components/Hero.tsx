@@ -7,55 +7,67 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onAction }) => {
-  const scrollToSearch = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const searchSection = document.getElementById('search');
-    if (searchSection) {
-      searchSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="relative bg-white overflow-hidden">
-      {/* Líneas decorativas sutiles */}
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <path d="M0 80 Q 50 10 100 80" fill="none" stroke="currentColor" strokeWidth="0.2"/>
-        </svg>
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-32 pb-24 lg:pt-48 lg:pb-32">
-        <div className="max-w-5xl">
-          <h1 className="text-[12vw] lg:text-[10rem] font-display italic text-slate-900 leading-[0.85] mb-12 animate-in fade-in slide-in-from-bottom-12 duration-1000">
-            Moda <br /> Inteligente.
-          </h1>
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-            <p className="max-w-sm text-xs lg:text-sm text-slate-400 uppercase tracking-[0.2em] leading-loose animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-              Nacidas en la carretera, creadas para la ciudad. <br />
-              Piezas técnicas sin concesiones que definen la nueva era digital.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-              <button 
-                onClick={() => onAction('digitalization-form')}
-                className="px-10 py-5 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] hover:bg-orange-500 transition-all shadow-xl"
-              >
-                Digitalizar Catálogo
-              </button>
-              
-              <button 
-                onClick={scrollToSearch}
-                className="group flex items-center space-x-4 px-10 py-5 border border-slate-100 hover:border-slate-900 transition-all"
-              >
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900">Explorar Visión</span>
-                <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
-                  </svg>
-                </div>
-              </button>
+    <div className="relative pt-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[90vh] border-b border-slate-100">
+        
+        {/* Sección Izquierda: Adelanto del Buscador */}
+        <div className="flex flex-col justify-between p-8 lg:p-16 border-r border-slate-100 bg-slate-50/50 group">
+          <div className="flex justify-between items-start">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Próximo Lanzamiento</span>
+            <div className="px-3 py-1 border border-blue-200 bg-blue-50 text-blue-500 text-[10px] font-bold rounded-full uppercase tracking-widest">
+              Muy Pronto
             </div>
+          </div>
+          
+          <div className="my-12">
+            <h2 className="text-6xl lg:text-8xl font-display italic text-slate-900 leading-[0.9] mb-6">
+              El <br/>Buscador <br/>Inteligente.
+            </h2>
+            <p className="max-w-md text-sm text-slate-500 leading-relaxed uppercase tracking-tight">
+              Diseñado para encontrar la prenda exacta que vive en tu imaginación. Sin filtros, solo intuición pura.
+            </p>
+          </div>
+
+          <a href="#search" className="flex items-center group-hover:translate-x-4 transition-transform duration-500">
+            <span className="text-xs font-black uppercase tracking-widest mr-4">Explorar Visión</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        {/* Sección Derecha: Servicio de Digitalización */}
+        <div className="flex flex-col justify-between p-8 lg:p-16 bg-white relative overflow-hidden group">
+          <div className="flex justify-between items-start z-10">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Servicios 01</span>
+            <div className="flex items-center space-x-2">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500">Gratis</span>
+              <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
+            </div>
+          </div>
+
+          <div className="my-12 z-10">
+            <h2 className="text-6xl lg:text-8xl font-display text-slate-900 leading-[0.9] mb-6">
+              Motor de <br/>Catálogo <br/>Digital.
+            </h2>
+            <p className="max-w-md text-sm text-slate-500 leading-relaxed uppercase tracking-tight">
+              Transformamos tu inventario físico en activos 3D de alta fidelidad. Un llamado a forjar tu propio camino digital.
+            </p>
+          </div>
+
+          <button 
+            onClick={() => onAction('digitalization-form')}
+            className="w-full lg:w-max px-12 py-5 bg-slate-900 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none hover:bg-orange-600 transition-colors z-10"
+          >
+            Digitaliza tu catálogo
+          </button>
+
+          {/* Background subtle logo mark */}
+          <div className="absolute -bottom-20 -right-20 opacity-[0.03] rotate-12 group-hover:scale-110 transition-transform duration-[3s] pointer-events-none">
+             <svg className="w-[500px] h-[500px]" viewBox="0 0 100 100" fill="currentColor">
+               <path d="M20 50 L80 50 M50 20 L50 80" />
+             </svg>
           </div>
         </div>
       </div>
