@@ -1,29 +1,29 @@
 
 [
   {
-    "name": "Identidad Visual Ropa Easy",
+    "name": "Ecosistema IA Ropa Easy",
     "settings": [
       {
         "type": "header",
-        "content": "Colores Corporativos"
+        "content": "Identidad de Marca"
       },
       {
         "type": "color",
         "id": "brand_orange",
-        "label": "Naranja Ropa Easy",
+        "label": "Color Acción (IA)",
         "default": "#f0945c"
       },
       {
         "type": "color",
-        "id": "brand_blue",
-        "label": "Azul Cielo Ropa Easy",
-        "default": "#89c4e1"
+        "id": "brand_slate",
+        "label": "Color Textos",
+        "default": "#0f172a"
       },
       {
-        "type": "font_picker",
-        "id": "font_main",
-        "label": "Tipografía Principal",
-        "default": "inter_n4"
+        "type": "checkbox",
+        "id": "enable_ai_search",
+        "label": "Habilitar Buscador Contextual",
+        "default": true
       }
     ]
   }

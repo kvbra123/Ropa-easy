@@ -27,7 +27,6 @@
       }
       .font-display { font-family: 'Playfair Display', serif; }
       
-      /* Animaciones de entrada suaves para componentes React */
       .animate-in {
         animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
@@ -40,18 +39,17 @@
         min-height: 100vh;
       }
 
-      /* Shopify Override para experiencia full screen */
       {% if template == 'index' %}
         #MainContent { display: none; }
       {% endif %}
     </style>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased overflow-x-hidden selection:bg-orange-50 selection:text-orange-900">
+  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
     {% section 'header' %}
 
     <div id="root">
-      <!-- Los componentes de React (Hero IA, Grid, Search) se montarán aquí -->
+      <!-- Los componentes de React (Hero IA, Grid, ImageEditor) se montarán aquí -->
     </div>
 
     <main id="MainContent" role="main" tabindex="-1">
