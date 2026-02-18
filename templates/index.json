@@ -1,21 +1,40 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero_banner": {
+    "hero": {
       "type": "hero-banner",
       "settings": {
-        "title": "Nueva Colección 2024",
-        "subtitle": "Edición Limitada - Ropa Easy",
-        "button_label": "Explorar Ahora"
+        "title": "Moda <br>Inteligente.",
+        "button_label": "Digitalizar Catálogo",
+        "button_link": ""
       }
     },
-    "digitalize_form": {
-      "type": "contact-form-digitalize",
+    "1771381393764bd4a6": {
+      "type": "apps",
+      "blocks": {
+        "qikify_form_builder_embed_form_hR7MH3": {
+          "type": "shopify://apps/qikify-form-builder/blocks/embed-form/753fa0d7-50d4-480a-b094-cff26e632c36",
+          "settings": {
+            "type": "trigger"
+          }
+        }
+      },
+      "block_order": [
+        "qikify_form_builder_embed_form_hR7MH3"
+      ],
       "settings": {}
     }
   },
   "order": [
-    "hero_banner",
-    "digitalize_form"
+    "hero",
+    "1771381393764bd4a6"
   ]
 }
