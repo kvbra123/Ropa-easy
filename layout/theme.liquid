@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ page_title }}</title>
+    <title>{{ page_title }} - ROPA EASY IA</title>
     
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
@@ -18,30 +18,41 @@
     <style>
       :root {
         --brand-orange: #f0945c;
-        --brand-blue: #89c4e1;
+        --brand-slate: #0f172a;
       }
       body { 
         font-family: 'Inter', sans-serif; 
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
       .font-display { font-family: 'Playfair Display', serif; }
       
-      /* Ocultamos las secciones estáticas de Shopify en el index para que React tome el control */
-      {% if template == 'index' %}
-        #MainContent { display: none; }
-      {% endif %}
+      /* Animaciones de entrada suaves para componentes React */
+      .animate-in {
+        animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
 
       #root {
         min-height: 100vh;
       }
+
+      /* Shopify Override para experiencia full screen */
+      {% if template == 'index' %}
+        #MainContent { display: none; }
+      {% endif %}
     </style>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+  <body class="bg-white text-slate-900 antialiased overflow-x-hidden selection:bg-orange-50 selection:text-orange-900">
     {% section 'header' %}
 
-    <!-- Punto de montaje para la App de React (Buscador IA + Nano Banana) -->
-    <div id="root"></div>
+    <div id="root">
+      <!-- Los componentes de React (Hero IA, Grid, Search) se montarán aquí -->
+    </div>
 
     <main id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
@@ -49,7 +60,6 @@
 
     {% section 'footer' %}
 
-    <!-- Carga de la lógica de React -->
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

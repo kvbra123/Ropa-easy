@@ -12,7 +12,7 @@ export const getAIFashionAdvice = async (query: string) => {
       Estructura tu respuesta en JSON para que pueda extraer:
       1. "advice": Un párrafo breve e inspirador (máx 40 palabras).
       2. "keywords": 3 etiquetas de estilo.
-      3. "recommendedProduct": Elige uno de estos que mejor encaje: 'NIKITA BODY', 'KIDDO PANT', 'BEATRIX COAT'.`,
+      3. "recommendedProduct": Elige uno de estos: 'NIKITA BODY', 'KIDDO PANT', 'BEATRIX COAT'.`,
       config: {
         responseMimeType: "application/json"
       }
@@ -39,12 +39,17 @@ export const editImageWithGemini = async (base64Image: string, prompt: string, m
             },
           },
           {
-            text: `Retoque editorial de alta costura: "${prompt}". 
-            Mantén el realismo fotográfico, ajusta la iluminación para que parezca de estudio profesional. 
-            Devuelve exclusivamente la imagen procesada.`,
+            text: `RETOQUE EDITORIAL PARA SHOPIFY: "${prompt}". 
+            Instrucción crítica: La imagen resultante debe estar centrada, con iluminación de estudio y fondos limpios. 
+            Devuelve exclusivamente la imagen procesada en formato cuadrado perfecto 1:1.`,
           },
         ],
       },
+      config: {
+        imageConfig: {
+          aspectRatio: "1:1"
+        }
+      }
     });
 
     const parts = response.candidates?.[0]?.content?.parts || [];
