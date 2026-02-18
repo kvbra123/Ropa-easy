@@ -17,21 +17,34 @@
     
     <style>
       :root {
-        --color-brand-orange: {{ settings.brand_orange | default: '#f0945c' }};
-        --color-brand-blue: {{ settings.brand_blue | default: '#89c4e1' }};
+        --brand-orange: #f0945c;
+        --brand-blue: #89c4e1;
       }
-      body { font-family: 'Inter', sans-serif; }
+      body { 
+        font-family: 'Inter', sans-serif; 
+        -webkit-font-smoothing: antialiased;
+      }
       .font-display { font-family: 'Playfair Display', serif; }
+      
+      /* Ocultar secciones de Liquid si React está activo en la Home */
+      {% if template == 'index' %}
+        #MainContent { display: none; }
+      {% endif %}
     </style>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased">
+  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
     {% section 'header' %}
+
+    <!-- Punto de montaje para la IA y la Visión (React) -->
+    <div id="root"></div>
 
     <main id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
     {% section 'footer' %}
+
+    <!-- El script de React se inyecta automáticamente aquí -->
   </body>
 </html>

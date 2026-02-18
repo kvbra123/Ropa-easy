@@ -1,8 +1,4 @@
 
-// Configuración para el Storefront API de Shopify
-const SHOPIFY_DOMAIN = 'tu-tienda.myshopify.com';
-const STOREFRONT_ACCESS_TOKEN = 'tu_access_token';
-
 export interface ShopifyProduct {
   id: string;
   title: string;
@@ -13,7 +9,6 @@ export interface ShopifyProduct {
   availableForSale: boolean;
 }
 
-// Datos de ejemplo basados en la estética Bécane
 const MOCK_PRODUCTS: ShopifyProduct[] = [
   {
     id: '1',
@@ -21,7 +16,7 @@ const MOCK_PRODUCTS: ShopifyProduct[] = [
     handle: 'nikita-body-olive',
     price: '230.00',
     currencyCode: 'EUR',
-    imageUrl: 'https://cdn.shopify.com/s/files/1/0905/9637/6920/files/P250317104650-1-TIFF-14_400x.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
     availableForSale: true
   },
   {
@@ -30,7 +25,7 @@ const MOCK_PRODUCTS: ShopifyProduct[] = [
     handle: 'kiddo-pant-kaki',
     price: '210.00',
     currencyCode: 'EUR',
-    imageUrl: 'https://cdn.shopify.com/s/files/1/0905/9637/6920/files/P250317115446-1-TIFF-17_400x.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1539109132381-31a077a5b23f?q=80&w=1000&auto=format&fit=crop',
     availableForSale: true
   },
   {
@@ -39,15 +34,13 @@ const MOCK_PRODUCTS: ShopifyProduct[] = [
     handle: 'beatrix-coat',
     price: '750.00',
     currencyCode: 'EUR',
-    imageUrl: 'https://cdn.shopify.com/s/files/1/0905/9637/6920/files/P250317115446-1-TIFF-1_400x.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
     availableForSale: true
   }
 ];
 
 export const getFeaturedProducts = async (): Promise<ShopifyProduct[]> => {
-  // En producción, aquí harías el fetch al API de Shopify
-  // const response = await fetch(`https://${SHOPIFY_DOMAIN}/api/2023-01/graphql.json`, { ... });
   return new Promise((resolve) => {
-    setTimeout(() => resolve(MOCK_PRODUCTS), 800);
+    setTimeout(() => resolve(MOCK_PRODUCTS), 600);
   });
 };
