@@ -4,12 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ page_title }}</title>
+    <title>Ropa Easy | Digitalización & IA</title>
     
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
-
     {{ content_for_header }}
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,28 +19,22 @@
       body { 
         font-family: 'Inter', sans-serif; 
         -webkit-font-smoothing: antialiased;
+        background: white;
       }
       .font-display { font-family: 'Playfair Display', serif; }
+      .editorial-grid { border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9; }
       
-      /* Ocultar secciones de Liquid si React está activo en la Home */
-      {% if template == 'index' %}
-        #MainContent { display: none; }
-      {% endif %}
+      /* Aseguramos que el root ocupe el espacio necesario */
+      #root { min-height: 100vh; }
     </style>
   </head>
 
   <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
-    {% section 'header' %}
-
-    <!-- Punto de montaje para la IA y la Visión (React) -->
+    <!-- Solo renderizamos el root de React para evitar duplicados con Liquid -->
     <div id="root"></div>
 
-    <main id="MainContent" role="main" tabindex="-1">
+    <main id="MainContent" class="hidden">
       {{ content_for_layout }}
     </main>
-
-    {% section 'footer' %}
-
-    <!-- El script de React se inyecta automáticamente aquí -->
   </body>
 </html>
