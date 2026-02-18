@@ -14,49 +14,60 @@ const ProductGrid: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-24 bg-white editorial-grid">
+    <section className="py-24 bg-white">
       <div className="max-w-[1400px] mx-auto px-6">
-        <div className="flex justify-between items-end mb-16 border-b border-slate-100 pb-8">
-          <div>
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-2 block">Selección Actual</span>
-            <h2 className="text-4xl font-display italic text-slate-900">Nuevos Looks</h2>
+        <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 border-b border-slate-100 pb-8">
+          <div className="mb-4 md:mb-0">
+            <span className="text-[9px] font-black uppercase tracking-[0.5em] text-orange-500 mb-2 block">The New Standard</span>
+            <h2 className="text-5xl font-display italic text-slate-900 tracking-tight">Cápsula Digital 01</h2>
           </div>
-          <a href="#" className="text-[10px] font-black uppercase tracking-widest text-slate-900 hover:text-orange-500 transition-colors">Ver Todo</a>
+          <div className="flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+            <button className="text-slate-900 border-b border-slate-900 pb-1">Todo</button>
+            <button className="hover:text-slate-900 transition-colors">Técnico</button>
+            <button className="hover:text-slate-900 transition-colors">Accesorios</button>
+          </div>
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[1, 2, 3].map(i => (
               <div key={i} className="animate-pulse">
-                <div className="aspect-[2/3] bg-slate-100 mb-6"></div>
-                <div className="h-4 bg-slate-100 w-3/4 mb-2"></div>
-                <div className="h-4 bg-slate-100 w-1/4"></div>
+                <div className="aspect-[3/4] bg-slate-50 mb-6"></div>
+                <div className="h-3 bg-slate-50 w-2/3 mb-3"></div>
+                <div className="h-3 bg-slate-50 w-1/4"></div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-20 lg:gap-x-20">
             {products.map((product) => (
-              <div key={product.id} className="group cursor-pointer">
-                <div className="relative aspect-[2/3] overflow-hidden bg-slate-50 mb-6">
+              <div key={product.id} className="group flex flex-col">
+                <div className="relative aspect-[3/4] overflow-hidden bg-slate-50 mb-8">
                   <img 
                     src={product.imageUrl} 
                     alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500"></div>
-                  <div className="absolute bottom-6 left-6 right-6 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <button className="w-full py-4 bg-white text-slate-900 text-[10px] font-black uppercase tracking-widest shadow-2xl hover:bg-slate-900 hover:text-white transition-colors">
-                      Comprar ahora
-                    </button>
+                  <div className="absolute top-4 left-4">
+                     <span className="px-2 py-1 bg-white text-[8px] font-black uppercase tracking-widest text-slate-900">New In</span>
+                  </div>
+                  <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-colors duration-500"></div>
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-white/90 backdrop-blur-md">
+                     <button className="w-full py-4 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-orange-500 transition-colors">
+                        Añadir al Carrito
+                     </button>
                   </div>
                 </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-xs font-black uppercase tracking-widest text-slate-900 mb-1">{product.title}</h3>
-                    <p className="text-[10px] text-slate-400 uppercase tracking-widest">Colección Heroines</p>
+                
+                <div className="flex flex-col items-center text-center">
+                  <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-900 mb-2 group-hover:text-orange-500 transition-colors">
+                    {product.title}
+                  </h3>
+                  <div className="flex items-center space-x-3">
+                    <span className="text-xs font-medium text-slate-400 line-through">280.00 EUR</span>
+                    <span className="text-xs font-bold text-slate-900">{product.price} {product.currencyCode}</span>
                   </div>
-                  <span className="text-xs font-medium text-slate-500">{product.price} {product.currencyCode}</span>
                 </div>
               </div>
             ))}

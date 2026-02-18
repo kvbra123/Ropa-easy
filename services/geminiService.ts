@@ -1,32 +1,32 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY || "";
-
 export const getAIFashionAdvice = async (query: string) => {
-  if (!API_KEY) return "Configura tu API_KEY para probar el buscador inteligente.";
-  
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
-      contents: `Eres el Asistente de IA de "Ropa Easy", una tienda conectada a Shopify. 
-      El usuario busca: "${query}". 
-      Tu objetivo es responder como un estilista personal de lujo. 
-      Menciona que pronto podrás añadir automáticamente productos como 'Nikita Body' o 'Kiddo Pant' al carrito basándote en esta búsqueda.
-      Sé inspirador, breve y usa un tono editorial (estilo revista Vogue). Máximo 50 palabras.`,
+      contents: `Eres el Asistente Stylist de "Ropa Easy". 
+      Usuario busca: "${query}". 
+      Responde como un editor de moda de lujo. 
+      Estructura tu respuesta en JSON para que pueda extraer:
+      1. "advice": Un párrafo breve e inspirador (máx 40 palabras).
+      2. "keywords": 3 etiquetas de estilo.
+      3. "recommendedProduct": Elige uno de estos que mejor encaje: 'NIKITA BODY', 'KIDDO PANT', 'BEATRIX COAT'.`,
+      config: {
+        responseMimeType: "application/json"
+      }
     });
-    return response.text;
+    
+    return JSON.parse(response.text || "{}");
   } catch (error) {
     console.error("Gemini Error:", error);
-    return "Nuestra IA está analizando el catálogo de la tienda para ti.";
+    return { advice: "Nuestra IA está analizando las tendencias para ti.", keywords: ["Tech", "Fashion"], recommendedProduct: null };
   }
 };
 
 export const editImageWithGemini = async (base64Image: string, prompt: string, mimeType: string) => {
-  if (!API_KEY) throw new Error("API_KEY no configurada");
-
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash-image',
@@ -39,23 +39,21 @@ export const editImageWithGemini = async (base64Image: string, prompt: string, m
             },
           },
           {
-            text: `Eres un experto en retoque fotográfico de moda para "Ropa Easy". 
-            Modifica la imagen siguiendo esta instrucción: "${prompt}". 
-            Mantén la estética editorial, limpia y de alta costura. 
-            Si el usuario pide un filtro, aplícalo con elegancia. 
-            Si pide quitar algo, hazlo de forma invisible. 
-            Devuelve solo la imagen editada.`,
+            text: `Retoque editorial de alta costura: "${prompt}". 
+            Mantén el realismo fotográfico, ajusta la iluminación para que parezca de estudio profesional. 
+            Devuelve exclusivamente la imagen procesada.`,
           },
         ],
       },
     });
 
-    for (const part of response.candidates?.[0]?.content?.parts || []) {
+    const parts = response.candidates?.[0]?.content?.parts || [];
+    for (const part of parts) {
       if (part.inlineData) {
         return `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
       }
     }
-    throw new Error("No se generó ninguna imagen en la respuesta.");
+    throw new Error("No image generated");
   } catch (error) {
     console.error("Gemini Image Error:", error);
     throw error;
