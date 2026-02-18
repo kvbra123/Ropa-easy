@@ -2,6 +2,7 @@
 export interface FormData {
   name: string;
   email: string;
+  regionCode: string;
   phone: string;
   brandName: string;
   catalogSize: string;

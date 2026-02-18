@@ -10,12 +10,14 @@ const LeadForm: React.FC<LeadFormProps> = ({ onBack }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState<FormData>({
-    name: '', email: '', phone: '', brandName: '', catalogSize: '1-10', message: ''
+    name: '', email: '', regionCode: '+34', phone: '', brandName: '', catalogSize: '1-10', message: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    // Simulate API call
+    console.log('Form submitted:', formData);
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -77,8 +79,8 @@ const LeadForm: React.FC<LeadFormProps> = ({ onBack }) => {
             <form onSubmit={handleSubmit} className="space-y-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Nombre Completo</label>
-                  <input required name="name" value={formData.name} onChange={handleChange} type="text" className="w-full py-4 bg-transparent outline-none font-medium" placeholder="Escribe aquí" />
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Nombre de la Persona</label>
+                  <input required name="name" value={formData.name} onChange={handleChange} type="text" className="w-full py-4 bg-transparent outline-none font-medium" placeholder="Escribe tu nombre" />
                 </div>
                 <div className="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Email Corporativo</label>
@@ -87,18 +89,29 @@ const LeadForm: React.FC<LeadFormProps> = ({ onBack }) => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-4 gap-4">
+                  <div className="col-span-1 group border-b border-slate-100 focus-within:border-orange-500 transition-all">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Cód.</label>
+                    <input required name="regionCode" value={formData.regionCode} onChange={handleChange} type="text" className="w-full py-4 bg-transparent outline-none font-medium" placeholder="+34" />
+                  </div>
+                  <div className="col-span-3 group border-b border-slate-100 focus-within:border-orange-500 transition-all">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Teléfono</label>
+                    <input required name="phone" value={formData.phone} onChange={handleChange} type="tel" className="w-full py-4 bg-transparent outline-none font-medium" placeholder="600 000 000" />
+                  </div>
+                </div>
                 <div className="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
                   <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Nombre de la Marca</label>
                   <input required name="brandName" value={formData.brandName} onChange={handleChange} type="text" className="w-full py-4 bg-transparent outline-none font-medium" placeholder="Tu marca" />
                 </div>
-                <div className="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Tamaño del Catálogo</label>
-                  <select name="catalogSize" value={formData.catalogSize} onChange={handleChange} className="w-full py-4 bg-transparent outline-none font-medium appearance-none">
-                    <option value="1-10">1-10 Prendas</option>
-                    <option value="11-50">11-50 Prendas</option>
-                    <option value="51+">Más de 50</option>
-                  </select>
-                </div>
+              </div>
+
+              <div className="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Tamaño del Catálogo</label>
+                <select name="catalogSize" value={formData.catalogSize} onChange={handleChange} className="w-full py-4 bg-transparent outline-none font-medium appearance-none">
+                  <option value="1-10">1-10 Prendas</option>
+                  <option value="11-50">11-50 Prendas</option>
+                  <option value="51+">Más de 50</option>
+                </select>
               </div>
 
               <div className="group border-b border-slate-100 focus-within:border-orange-500 transition-all">

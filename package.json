@@ -1,13 +1,38 @@
-
 {
   "name": "ropa-easy-shopify-ia-theme",
   "version": "1.0.0",
   "description": "Shopify 2.0 Theme with Integrated Gemini IA for Fashion Brands",
   "main": "index.tsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
   "dependencies": {
+    "@eslint/js": "^10.0.1",
     "@google/genai": "^1.41.0",
+    "clsx": "^2.1.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.0",
+    "framer-motion": "^11.11.11",
+    "globals": "^17.3.0",
+    "lucide-react": "^0.454.0",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "tailwind-merge": "^2.5.4",
+    "typescript-eslint": "^8.56.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.19.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
   },
   "shopify": {
     "theme_folders": [

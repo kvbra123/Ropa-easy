@@ -2,9 +2,15 @@
 import React, { useState } from 'react';
 import { getAIFashionAdvice } from '../services/geminiService';
 
+interface SearchResult {
+  advice: string;
+  recommendedProduct: string;
+  keywords: string[];
+}
+
 const AISearchSection: React.FC = () => {
   const [query, setQuery] = useState('');
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<SearchResult | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleDemoSearch = async (e: React.FormEvent) => {

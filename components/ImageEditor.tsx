@@ -37,6 +37,7 @@ const ImageEditor: React.FC<ImageEditorProps> = ({ onBack }) => {
       const result = await editImageWithGemini(originalImage, prompt, 'image/jpeg');
       setEditedImage(result);
     } catch (err) {
+      console.error('Error editing image:', err);
       setError("Error en el renderizado. Por favor, intenta de nuevo.");
     } finally {
       setLoading(false);
