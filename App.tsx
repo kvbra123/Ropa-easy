@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AISearchSection from './components/AISearchSection';
@@ -15,6 +15,22 @@ const App: React.FC = () => {
     setCurrentView(view);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Escuchar eventos desde el Header de Shopify (Liquid) o la URL
+  useEffect(() => {
+    const handleGlobalNav = () => navigate('image-editor');
+    window.addEventListener('navigate-to-editor', handleGlobalNav);
+
+    // Revisar parámetros de URL (útil cuando venimos de otra página de la tienda)
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('view') === 'image-editor') {
+      navigate('image-editor');
+      // Limpiar el parámetro de la URL discretamente
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+
+    return () => window.removeEventListener('navigate-to-editor', handleGlobalNav);
+  }, []);
 
   const renderContent = () => {
     switch (currentView) {
@@ -33,7 +49,7 @@ const App: React.FC = () => {
       case 'landing':
       default:
         return (
-          <main className="animate-in fade-in duration-1000 pt-20">
+          <main className="animate-in fade-in duration-1000">
             <Hero onAction={navigate} />
             <ProductGrid />
             <AISearchSection />
@@ -41,23 +57,23 @@ const App: React.FC = () => {
               <div className="max-w-[1400px] mx-auto px-6 text-center">
                 <div className="mb-12">
                   <span className="text-4xl font-extrabold tracking-tighter text-slate-900 uppercase">ROPA EASY</span>
-                  <p className="text-[10px] font-medium tracking-[0.5em] text-slate-400 uppercase mt-2">Nacidas en la carretera, creadas para la ciudad.</p>
+                  <p className="text-[10px] font-medium tracking-[0.5em] text-slate-400 uppercase mt-2">Tecnología de vanguardia para marcas sin concesiones.</p>
                 </div>
                 
                 <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12 mb-16">
-                  {['Instagram', 'LinkedIn', 'hello@ropaeasy.com'].map((item) => (
-                    <a key={item} href="#" className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-orange-500 transition-colors underline-offset-8 hover:underline">
+                  {['Instagram', 'LinkedIn', 'Soporte Técnico'].map((item) => (
+                    <a key={item} href="#" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-orange-500 transition-colors underline-offset-8 hover:underline">
                       {item}
                     </a>
                   ))}
                 </div>
                 
                 <div className="max-w-2xl mx-auto border-t border-slate-100 pt-12">
-                  <p className="text-[10px] leading-loose text-slate-300 uppercase tracking-widest">
-                    Técnicas, protectoras y orgullosamente femeninas, nuestras piezas brindan la confianza necesaria para moverse con libertad. Un llamado a forjar tu propio camino, sin compromisos ni concesiones.
+                  <p className="text-[10px] leading-loose text-slate-300 uppercase tracking-[0.2em]">
+                    Forjando el futuro de la moda digital.
                   </p>
                   <p className="text-[10px] text-slate-200 mt-8">
-                    &copy; 2024 Ropa Easy. Todos los derechos reservados.
+                    &copy; 2024 Ropa Easy.
                   </p>
                 </div>
               </div>
@@ -69,7 +85,8 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen selection:bg-orange-100 selection:text-orange-900 bg-white">
-      <Navbar onNavigate={navigate} />
+      {/* El Navbar de React se muestra solo en vistas profundas como el editor para dar control de retroceso */}
+      {currentView !== 'landing' && <Navbar onNavigate={navigate} />}
       {renderContent()}
     </div>
   );
