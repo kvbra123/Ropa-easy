@@ -56,12 +56,25 @@ const Hero: React.FC<HeroProps> = ({ onAction }) => {
             </p>
           </div>
 
-          <button 
-            onClick={() => onAction('digitalization-form')}
-            className="w-full lg:w-max px-12 py-5 bg-slate-900 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none hover:bg-orange-600 transition-colors z-10"
-          >
-            Digitaliza tu catálogo
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 z-10">
+            <button 
+              onClick={() => onAction('digitalization-form')}
+              className="px-10 py-5 bg-slate-900 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none hover:bg-slate-800 transition-colors"
+            >
+              Digitaliza tu catálogo
+            </button>
+            <button 
+              onClick={() => onAction('image-editor')}
+              className="group flex items-center justify-center space-x-4 px-10 py-5 bg-orange-500 text-white text-xs font-bold uppercase tracking-[0.2em] rounded-none hover:bg-orange-600 transition-colors"
+            >
+              <span>Nano Banana Editor</span>
+              <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <path d="M12 4v16m8-8H4"/>
+                </svg>
+              </div>
+            </button>
+          </div>
 
           {/* Background subtle logo mark */}
           <div className="absolute -bottom-20 -right-20 opacity-[0.03] rotate-12 group-hover:scale-110 transition-transform duration-[3s] pointer-events-none">

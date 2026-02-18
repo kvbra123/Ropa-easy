@@ -8,4 +8,4 @@ export interface FormData {
   message: string;
 }
 
-export type ViewState = 'landing' | 'digitalization-form';
+export type ViewState = 'landing' | 'digitalization-form' | 'image-editor';
