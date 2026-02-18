@@ -26,14 +26,14 @@ const App: React.FC = () => {
         );
       case 'image-editor':
         return (
-          <div className="animate-in slide-in-from-bottom-10 duration-700">
+          <div className="animate-in fade-in zoom-in duration-500">
             <ImageEditor onBack={() => navigate('landing')} />
           </div>
         );
       case 'landing':
       default:
         return (
-          <main className="animate-in fade-in duration-1000">
+          <main className="animate-in fade-in duration-1000 pt-20">
             <Hero onAction={navigate} />
             <ProductGrid />
             <AISearchSection />
@@ -68,7 +68,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen selection:bg-orange-100 selection:text-orange-900">
+    <div className="min-h-screen selection:bg-orange-100 selection:text-orange-900 bg-white">
       <Navbar onNavigate={navigate} />
       {renderContent()}
     </div>

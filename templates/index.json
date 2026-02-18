@@ -1,22 +1,5 @@
 
 {
-  "sections": {
-    "hero": {
-      "type": "hero-banner",
-      "settings": {
-        "title": "Moda <br>Inteligente.",
-        "description": "Nacidas en la carretera, creadas para la ciudad. Piezas técnicas sin concesiones.",
-        "button_label": "Digitalizar Catálogo",
-        "button_link": "#contact-digitalize"
-      }
-    },
-    "contact": {
-      "type": "contact-form-digitalize",
-      "settings": {}
-    }
-  },
-  "order": [
-    "hero",
-    "contact"
-  ]
+  "sections": {},
+  "order": []
 }

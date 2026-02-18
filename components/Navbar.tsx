@@ -21,15 +21,21 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-8">
-            <a href="#search" className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-orange-500 transition-colors hidden sm:block">
+          <div className="flex items-center space-x-4 sm:space-x-8">
+            <a href="#search" className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-orange-500 transition-colors hidden md:block">
               Buscador IA
             </a>
             <button 
-              onClick={() => onNavigate('digitalization-form')}
-              className="group flex items-center space-x-3 px-6 py-2 border border-slate-900 rounded-full hover:bg-slate-900 hover:text-white transition-all duration-300"
+              onClick={() => onNavigate('image-editor')}
+              className="text-[10px] font-black uppercase tracking-widest text-orange-500 hover:text-orange-600 transition-colors"
             >
-              <span className="text-xs font-bold uppercase tracking-widest">Digitalizar</span>
+              Nano Editor
+            </button>
+            <button 
+              onClick={() => onNavigate('digitalization-form')}
+              className="group flex items-center space-x-3 px-4 sm:px-6 py-2 border border-slate-900 rounded-full hover:bg-slate-900 hover:text-white transition-all duration-300"
+            >
+              <span className="text-[10px] font-bold uppercase tracking-widest">Digitalizar</span>
               <div className="w-2 h-2 bg-orange-500 rounded-full group-hover:bg-white animate-pulse"></div>
             </button>
           </div>
