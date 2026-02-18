@@ -1,0 +1,17 @@
+
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password"
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "search": "Search AI"
+    },
+    "hero": {
+      "cta": "Explore Now"
+    }
+  }
+}
