@@ -4,7 +4,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ page_title }} - ROPA EASY IA</title>
+    <link rel="canonical" href="{{ canonical_url }}">
+    
+    <title>{{ page_title }} - Ropa Easy IA</title>
     
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
@@ -17,13 +19,12 @@
     
     <style>
       :root {
-        --brand-orange: #f0945c;
-        --brand-slate: #0f172a;
+        --brand-orange: {{ settings.brand_orange | default: '#f0945c' }};
+        --brand-slate: {{ settings.brand_slate | default: '#0f172a' }};
       }
       body { 
         font-family: 'Inter', sans-serif; 
         -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
       }
       .font-display { font-family: 'Playfair Display', serif; }
       
@@ -35,21 +36,23 @@
         to { opacity: 1; transform: translateY(0); }
       }
 
-      #root {
+      /* Shopify Header Overrides */
+      #MainContent { 
         min-height: 100vh;
       }
-
+      
       {% if template == 'index' %}
+        /* En la home el contenido nativo se oculta para dar paso a la App React */
         #MainContent { display: none; }
       {% endif %}
     </style>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+  <body class="bg-white text-slate-900 antialiased overflow-x-hidden selection:bg-orange-100">
     {% section 'header' %}
 
     <div id="root">
-      <!-- Los componentes de React (Hero IA, Grid, ImageEditor) se montarán aquí -->
+      <!-- Punto de montaje para ImageEditor (1:1) y AI Personal Shopper -->
     </div>
 
     <main id="MainContent" role="main" tabindex="-1">

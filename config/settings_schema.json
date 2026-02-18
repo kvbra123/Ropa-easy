@@ -1,11 +1,11 @@
 
 [
   {
-    "name": "Ecosistema IA Ropa Easy",
+    "name": "Identidad Ropa Easy",
     "settings": [
       {
         "type": "header",
-        "content": "Identidad de Marca"
+        "content": "Colores de Sistema"
       },
       {
         "type": "color",
@@ -16,13 +16,17 @@
       {
         "type": "color",
         "id": "brand_slate",
-        "label": "Color Textos",
+        "label": "Color Principal",
         "default": "#0f172a"
       },
       {
+        "type": "header",
+        "content": "Configuración IA"
+      },
+      {
         "type": "checkbox",
-        "id": "enable_ai_search",
-        "label": "Habilitar Buscador Contextual",
+        "id": "enable_1_1_editor",
+        "label": "Habilitar Editor Studio 1:1",
         "default": true
       }
     ]
