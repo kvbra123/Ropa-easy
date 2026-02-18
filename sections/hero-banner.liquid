@@ -1,38 +1,89 @@
 
-<section class="relative min-h-[80vh] flex items-center bg-slate-50 overflow-hidden border-b border-slate-100">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
-    <div class="lg:col-span-8">
-      <span class="text-[10px] font-black uppercase tracking-[0.5em] text-orange-500 mb-8 block underline decoration-2 underline-offset-8">Shopify Tech Edition</span>
-      <h1 class="text-7xl lg:text-[10rem] font-display italic text-slate-900 leading-[0.8] mb-12 tracking-tighter">
-        {{ section.settings.title }}
-      </h1>
-      <p class="text-xs lg:text-sm text-slate-400 uppercase tracking-[0.2em] leading-loose max-w-md mb-16">
-        {{ section.settings.description }}
+<section class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+  <!-- Imagen de Fondo con Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="{{ section.settings.image | default: 'https://images.unsplash.com/photo-1490481651871-ab68624d5517?q=80&w=2070&auto=format&fit=crop' }}" 
+      alt="Hero Background" 
+      class="w-full h-full object-cover"
+    >
+    <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px]"></div>
+  </div>
+
+  <!-- Contenido Central -->
+  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+    <span class="inline-block text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-white mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      {{ section.settings.subtitle | default: 'Edición Limitada' }}
+    </span>
+    
+    <h1 class="text-6xl md:text-8xl lg:text-[10rem] font-display italic text-white leading-none mb-12 tracking-tighter animate-in fade-in slide-in-from-bottom-8 duration-1000">
+      {{ section.settings.title | default: 'Nueva Colección 2024' }}
+    </h1>
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8 animate-in fade-in slide-in-from-bottom-12 duration-1000">
+      <a href="{{ section.settings.button_link | default: '/collections/all' }}" 
+         class="px-12 py-5 bg-white text-slate-900 text-[10px] font-black uppercase tracking-[0.3em] hover:bg-orange-500 hover:text-white transition-all duration-500 shadow-2xl">
+        {{ section.settings.button_label | default: 'Explorar Ahora' }}
+      </a>
+      
+      <p class="text-[10px] text-white/70 uppercase tracking-[0.2em] max-w-[200px] text-left hidden md:block border-l border-white/20 pl-6">
+        Diseños forjados en la intersección de la tecnología y la alta costura.
       </p>
-      <div class="flex flex-col sm:flex-row gap-8">
-        <a href="#search" class="inline-flex items-center group">
-          <span class="text-[11px] font-black uppercase tracking-[0.4em] border-b-2 border-slate-900 pb-2 group-hover:border-orange-500 transition-colors">
-            {{ section.settings.button_label }}
-          </span>
-          <svg class="w-5 h-5 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2"/></svg>
-        </a>
-      </div>
     </div>
   </div>
 
-  <!-- Decoración Background -->
-  <div class="absolute top-1/2 right-0 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none">
-    <span class="text-[30rem] font-black uppercase tracking-tighter leading-none">IA</span>
+  <!-- Decoración Lateral -->
+  <div class="absolute bottom-12 left-12 hidden lg:block">
+    <div class="flex flex-col space-y-4">
+      <div class="w-1 h-20 bg-gradient-to-b from-orange-500 to-transparent"></div>
+      <span class="text-[8px] font-bold text-white/30 uppercase vertical-text tracking-widest" style="writing-mode: vertical-rl;">EST. 2024</span>
+    </div>
   </div>
 </section>
 
+<style>
+  .vertical-text {
+    transform: rotate(180deg);
+  }
+</style>
+
 {% schema %}
 {
-  "name": "Hero Banner",
+  "name": "Hero Banner Impactante",
   "settings": [
-    { "type": "text", "id": "title", "label": "Título", "default": "Estilo <br>Procesado." },
-    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Motor de inteligencia artificial para la digitalización de marcas de moda." },
-    { "type": "text", "id": "button_label", "label": "Etiqueta Botón", "default": "Explorar Visión" }
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título Principal",
+      "default": "Nueva Colección 2024"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Edición Limitada"
+    },
+    {
+      "type": "url",
+      "id": "image",
+      "label": "URL de Imagen de Fondo (Opcional)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Etiqueta del Botón",
+      "default": "Explorar Ahora"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del Botón"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner Impactante"
+    }
   ]
 }
 {% endschema %}

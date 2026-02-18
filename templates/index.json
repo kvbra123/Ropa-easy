@@ -1,18 +1,21 @@
 
 {
   "sections": {
-    "hero": {
+    "hero_banner": {
       "type": "hero-banner",
       "settings": {
-        "title": "Arquitectura <br>Digital 1:1",
-        "description": "IA Generativa para la creación de catálogos perfectos en Shopify.",
-        "button_label": "Comenzar Edición IA"
+        "title": "Nueva Colección 2024",
+        "subtitle": "Edición Limitada - Ropa Easy",
+        "button_label": "Explorar Ahora"
       }
     },
-    "main_content": {
+    "digitalize_form": {
       "type": "contact-form-digitalize",
       "settings": {}
     }
   },
-  "order": ["hero", "main_content"]
+  "order": [
+    "hero_banner",
+    "digitalize_form"
+  ]
 }
