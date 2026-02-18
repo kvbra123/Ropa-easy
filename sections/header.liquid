@@ -14,35 +14,11 @@
       <!-- 2. NAVEGACIÓN CENTRAL (Desktop) -->
       <nav class="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 space-x-10">
         <a href="/collections/all" class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-slate-900 transition-colors">Colecciones</a>
-        
-        <!-- Botón Central Destacado -->
-        <button 
-          onclick="window.dispatchEvent(new CustomEvent('navigate-to-editor'))"
-          class="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500 hover:text-orange-600 transition-all flex items-center space-x-2 group"
-        >
-          <span class="relative">
-            NANO EDITOR IA
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-orange-500 transition-all group-hover:w-full"></span>
-          </span>
-          <span class="flex h-2 w-2 relative">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-          </span>
-        </button>
-
         <a href="#search" class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-slate-900 transition-colors">Buscador</a>
       </nav>
 
       <!-- 3. ACCIONES DERECHA -->
       <div class="flex-1 flex items-center justify-end space-x-6">
-        <!-- Acceso rápido móvil/tablet -->
-        <button 
-          onclick="window.dispatchEvent(new CustomEvent('navigate-to-editor'))"
-          class="sm:hidden flex items-center justify-center w-10 h-10 bg-orange-500 text-white rounded-full shadow-lg"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
-        </button>
-
         <a href="{{ routes.cart_url }}" class="group relative flex items-center">
           <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           <span class="absolute -top-1 -right-1 bg-slate-900 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
@@ -54,12 +30,3 @@
     </div>
   </div>
 </header>
-
-<script>
-  // Si el usuario no está en la Home, lo redirigimos pasando el parámetro de la vista
-  document.addEventListener('navigate-to-editor', () => {
-    if (window.location.pathname !== '/') {
-      window.location.href = '/?view=image-editor';
-    }
-  });
-</script>

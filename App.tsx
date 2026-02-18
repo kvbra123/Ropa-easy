@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AISearchSection from './components/AISearchSection';
@@ -15,22 +15,6 @@ const App: React.FC = () => {
     setCurrentView(view);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  // Escuchar eventos desde el Header de Shopify (Liquid) o la URL
-  useEffect(() => {
-    const handleGlobalNav = () => navigate('image-editor');
-    window.addEventListener('navigate-to-editor', handleGlobalNav);
-
-    // Revisar parámetros de URL (útil cuando venimos de otra página de la tienda)
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('view') === 'image-editor') {
-      navigate('image-editor');
-      // Limpiar el parámetro de la URL discretamente
-      window.history.replaceState({}, '', window.location.pathname);
-    }
-
-    return () => window.removeEventListener('navigate-to-editor', handleGlobalNav);
-  }, []);
 
   const renderContent = () => {
     switch (currentView) {
@@ -85,8 +69,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen selection:bg-orange-100 selection:text-orange-900 bg-white">
-      {/* El Navbar de React se muestra solo en vistas profundas como el editor para dar control de retroceso */}
-      {currentView !== 'landing' && <Navbar onNavigate={navigate} />}
+      <Navbar onNavigate={navigate} />
       {renderContent()}
     </div>
   );
