@@ -1,31 +1,27 @@
 
-<header class="relative z-50 bg-white border-b border-slate-100">
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
-    <div class="flex justify-between items-center h-24">
-      
-      <div class="flex-1">
-        <a href="/" class="flex flex-col leading-none">
-          <span class="text-2xl font-black tracking-tighter text-slate-900 uppercase">ROPA EASY</span>
-          <span class="text-[9px] font-bold tracking-[0.4em] text-slate-400 uppercase mt-1">Inteligencia de Catálogo</span>
-        </a>
-      </div>
+<header class="bg-white border-b border-slate-100 sticky top-0 z-50">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-6 flex justify-between items-center">
+    <a href="/" class="flex flex-col leading-none">
+      <span class="text-2xl font-black tracking-tighter text-slate-900 uppercase">ROPA EASY</span>
+      <span class="text-[9px] font-bold tracking-[0.4em] text-slate-400 uppercase">Tech & Fashion IA</span>
+    </a>
 
-      <nav class="hidden lg:flex items-center space-x-12">
-        <a href="/collections/all" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-slate-900 transition-colors">Colecciones</a>
-        <a href="#search" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-slate-900 transition-colors">Personal Shopper</a>
-        <a href="#contact-digitalize" class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 hover:text-slate-900 transition-colors">B2B Digitalizar</a>
-      </nav>
+    <nav class="hidden md:flex space-x-10">
+      <a href="/collections/all" class="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors">Catálogo</a>
+      <a href="#search" class="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors">Buscador IA</a>
+    </nav>
 
-      <div class="flex-1 flex justify-end items-center space-x-8">
-        <button class="text-[10px] font-black uppercase tracking-widest text-orange-500 border border-orange-500/20 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-all">
-          Studio 1:1
-        </button>
-        <a href="/cart" class="relative">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <span class="absolute -top-2 -right-2 bg-slate-900 text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-black">0</span>
-        </a>
-      </div>
-
+    <div class="flex items-center space-x-6">
+      <button class="bg-slate-900 text-white text-[9px] font-black uppercase tracking-widest px-6 py-3 hover:bg-orange-500 transition-all">
+        Studio 1:1
+      </button>
     </div>
   </div>
 </header>
+
+{% schema %}
+{
+  "name": "Header IA",
+  "settings": []
+}
+{% endschema %}

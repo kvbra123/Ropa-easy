@@ -3,17 +3,25 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.brand_orange }}">
     <link rel="canonical" href="{{ canonical_url }}">
-    
-    <title>{{ page_title }} - Ropa Easy IA</title>
-    
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
     {{ content_for_header }}
 
+    <!-- Estilos Globales y Fuentes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     
@@ -24,36 +32,25 @@
       }
       body { 
         font-family: 'Inter', sans-serif; 
-        -webkit-font-smoothing: antialiased;
+        background-color: #fff;
+        color: var(--brand-slate);
       }
       .font-display { font-family: 'Playfair Display', serif; }
       
-      .animate-in {
-        animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      /* Shopify Header Overrides */
-      #MainContent { 
+      #root:empty {
         min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      
-      {% if template == 'index' %}
-        /* En la home el contenido nativo se oculta para dar paso a la App React */
-        #MainContent { display: none; }
-      {% endif %}
     </style>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased overflow-x-hidden selection:bg-orange-100">
+  <body class="antialiased selection:bg-orange-100">
     {% section 'header' %}
 
-    <div id="root">
-      <!-- Punto de montaje para ImageEditor (1:1) y AI Personal Shopper -->
-    </div>
+    <!-- Punto de montaje para la lógica IA (React) -->
+    <div id="root"></div>
 
     <main id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}

@@ -1,33 +1,44 @@
 
 [
   {
-    "name": "Identidad Ropa Easy",
+    "name": "theme_info",
+    "theme_name": "Ropa Easy IA",
+    "theme_version": "1.0.0",
+    "theme_author": "AI Studio",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://support.shopify.com"
+  },
+  {
+    "name": "Colores de Marca",
     "settings": [
-      {
-        "type": "header",
-        "content": "Colores de Sistema"
-      },
       {
         "type": "color",
         "id": "brand_orange",
-        "label": "Color Acción (IA)",
+        "label": "Naranja Corporativo (Acción IA)",
         "default": "#f0945c"
       },
       {
         "type": "color",
         "id": "brand_slate",
-        "label": "Color Principal",
+        "label": "Azul Pizarra (Textos)",
         "default": "#0f172a"
-      },
-      {
-        "type": "header",
-        "content": "Configuración IA"
-      },
+      }
+    ]
+  },
+  {
+    "name": "Configuración de IA",
+    "settings": [
       {
         "type": "checkbox",
-        "id": "enable_1_1_editor",
+        "id": "enable_ai_studio",
         "label": "Habilitar Editor Studio 1:1",
         "default": true
+      },
+      {
+        "type": "text",
+        "id": "ai_assistant_name",
+        "label": "Nombre del Asistente IA",
+        "default": "Nano Stylist"
       }
     ]
   }

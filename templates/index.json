@@ -5,14 +5,14 @@
       "type": "hero-banner",
       "settings": {
         "title": "Arquitectura <br>Digital 1:1",
-        "description": "IA Generativa integrada para crear assets de catálogo perfectos.",
-        "button_label": "Abrir Studio IA"
+        "description": "IA Generativa para la creación de catálogos perfectos en Shopify.",
+        "button_label": "Comenzar Edición IA"
       }
     },
-    "digitalize": {
+    "main_content": {
       "type": "contact-form-digitalize",
       "settings": {}
     }
   },
-  "order": ["hero", "digitalize"]
+  "order": ["hero", "main_content"]
 }

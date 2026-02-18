@@ -1,0 +1,21 @@
+
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "settings": {
+      "brand_orange": "#f0945c",
+      "brand_slate": "#0f172a",
+      "enable_ai_studio": true,
+      "ai_assistant_name": "Nano Stylist"
+    }
+  }
+}
