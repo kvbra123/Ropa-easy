@@ -1,0 +1,87 @@
+
+<section id="contact-digitalize" class="bg-white py-24 lg:py-32 border-t border-slate-100">
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      
+      <!-- Panel de Información -->
+      <div class="lg:col-span-4 space-y-8">
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 mb-4 block">Servicio B2B</span>
+          <h2 class="text-5xl font-display leading-[1.1] text-slate-900">Digitaliza <br>tu Marca.</h2>
+        </div>
+        <p class="text-[11px] text-slate-400 uppercase tracking-widest leading-loose max-w-xs">
+          Nuestra tecnología de renderizado 3D permite que tu inventario físico se convierta en una experiencia de compra interactiva. Completa el formulario y nuestro equipo técnico te contactará.
+        </p>
+        <div class="pt-8 border-t border-slate-50">
+          <p class="text-[9px] font-bold text-slate-300 uppercase tracking-widest italic">Respuesta garantizada en 24h.</p>
+        </div>
+      </div>
+
+      <!-- Panel del Formulario Nativo -->
+      <div class="lg:col-span-8">
+        {%- form 'contact', id: 'ContactDigitalize' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="p-8 bg-slate-900 text-white animate-in zoom-in duration-500">
+              <h3 class="text-3xl font-display italic mb-4">Solicitud Recibida.</h3>
+              <p class="text-[10px] uppercase tracking-widest leading-loose text-slate-400">Gracias por confiar en Ropa Easy. Hemos enviado los detalles a nuestro equipo de digitalización.</p>
+            </div>
+          {%- else -%}
+            
+            {%- if form.errors -%}
+              <div class="mb-8 p-4 bg-red-50 text-red-500 text-[10px] font-bold uppercase tracking-widest">
+                {{ form.errors | default_errors }}
+              </div>
+            {%- endif -%}
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+              <div class="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
+                <label for="ContactForm-name" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Nombre de la Empresa / Contacto</label>
+                <input required type="text" name="contact[name]" id="ContactForm-name" class="w-full py-4 bg-transparent outline-none font-medium text-slate-900" placeholder="Ej: Ropa Easy Tech">
+              </div>
+              <div class="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
+                <label for="ContactForm-email" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Email Corporativo</label>
+                <input required type="email" name="contact[email]" id="ContactForm-email" class="w-full py-4 bg-transparent outline-none font-medium text-slate-900" placeholder="hola@tuempresa.com">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+              <div class="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
+                <label for="ContactForm-phone" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Teléfono</label>
+                <input type="tel" name="contact[phone]" id="ContactForm-phone" class="w-full py-4 bg-transparent outline-none font-medium text-slate-900" placeholder="+34 ...">
+              </div>
+              <div class="group border-b border-slate-100 focus-within:border-orange-500 transition-all">
+                <label for="ContactForm-size" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Tamaño del Catálogo</label>
+                <select name="contact[catalog_size]" id="ContactForm-size" class="w-full py-4 bg-transparent outline-none font-medium appearance-none text-slate-900">
+                  <option value="1-10">1-10 Prendas</option>
+                  <option value="11-50">11-50 Prendas</option>
+                  <option value="51+">Más de 50</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="group border-b border-slate-100 focus-within:border-orange-500 transition-all mb-16">
+              <label for="ContactForm-body" class="text-[10px] font-black uppercase tracking-widest text-slate-400">Mensaje / Detalles Adicionales</label>
+              <textarea rows="2" name="contact[body]" id="ContactForm-body" class="w-full py-4 bg-transparent outline-none font-medium text-slate-900 resize-none" placeholder="Cuéntanos sobre tu catálogo..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-6 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-orange-500 transition-all shadow-xl">
+              Enviar Solicitud de Digitalización
+            </button>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Formulario Digitalización",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Formulario Digitalización"
+    }
+  ]
+}
+{% endschema %}
